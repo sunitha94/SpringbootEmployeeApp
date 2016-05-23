@@ -12,5 +12,6 @@
 </head>
 <body>
 <h1>Hello ${user}, Welcome to EMP App</h1>
+<a href="/employees">Show Employees</a>
 </body>
 </html>
