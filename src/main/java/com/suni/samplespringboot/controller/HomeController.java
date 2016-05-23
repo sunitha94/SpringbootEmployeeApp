@@ -1,5 +1,7 @@
 package com.suni.samplespringboot.controller;
 
+import com.suni.samplespringboot.SampleSpringBootApplication;
+import com.suni.samplespringboot.ServletInitializer;
 import com.suni.samplespringboot.model.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,19 +18,11 @@ import java.util.Map;
  */
 @Controller
 public class HomeController {
-  Map<Integer, Employee> employeeMap = new HashMap<>();
+  Map<Integer, Employee> employeeMap = ServletInitializer.employeeMap;
 
   @RequestMapping(value = "/")
   public String home(Model model) {
     model.addAttribute("user", "Sunitha");
-    for (int i = 0; i < 10; i++) {
-      Employee employee = new Employee();
-      employee.setId(i);
-      employee.setName("Richard");
-      employee.setEmail("richard@gmail.com");
-      employee.setGender("Male");
-      employeeMap.put(i, employee);
-    }
     return "index";
   }
 
@@ -41,8 +35,13 @@ public class HomeController {
   @RequestMapping(value = "/employees/{empId}")
   public String editEmployee(@PathVariable(value = "empId") int empId, Model model) {
     model.addAttribute("employee", employeeMap.get(empId));
-    System.out.println("employee: "+employeeMap.get(empId));
     return "editEmployee";
+  }
+
+  @RequestMapping(value = "/employees/update")
+  public String updateEmployees(Employee employee, Model model) {
+    employeeMap.put(employee.getId(), employee);
+    return "redirect:/employees";
   }
 
 }

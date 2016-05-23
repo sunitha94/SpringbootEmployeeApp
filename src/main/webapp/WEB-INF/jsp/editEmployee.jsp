@@ -13,6 +13,7 @@
 </head>
 <body>
 <form:form action="/employees/update" method="POST" modelAttribute="employee">
+  <form:input type="hidden" path="id"/>
   Name: <form:input type="text" path="name" name="name"/><br/>
   Email: <form:input type="email" path="email" name="email"/><br/>
   Gender: <form:select name="gender" path="gender">
