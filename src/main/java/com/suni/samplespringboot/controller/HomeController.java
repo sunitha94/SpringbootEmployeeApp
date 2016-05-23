@@ -44,4 +44,12 @@ public class HomeController {
     return "redirect:/employees";
   }
 
+  @RequestMapping(value = "/employees/{empId}/delete")
+  public String deleteEmployees(@PathVariable(value = "empId") Integer empId, Model model) {
+    employeeMap.remove(empId);
+    model.addAttribute("employees", employeeMap.values());
+    model.addAttribute("message", "successfully employee deleted");
+    return "employees";
+  }
+
 }

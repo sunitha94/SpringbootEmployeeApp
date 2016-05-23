@@ -12,7 +12,10 @@
   <title>Home</title>
 </head>
 <body>
-<h1>Emplpoyees Page</h1>
+<a href="/"><h1>Emplpoyees Page</h1></a>
+<c:if test="${message!=null}">
+  <p style="color: green">${message}</p>
+</c:if>
 <table>
   <tr>
     <td>Id</td>
@@ -27,7 +30,8 @@
       <td>${employee.name}</td>
       <td>${employee.email}</td>
       <td>${employee.gender}</td>
-      <td><a href="/employees/${employee.id}">Edit</a> &nbsp;<a id="/employees/${employee.id}">Delete</a></td>
+      <td><a href="/employees/${employee.id}">Edit</a> &nbsp;
+        <a href="/employees/${employee.id}/delete">Delete</a></td>
     </tr>
   </c:forEach>
 </table>
