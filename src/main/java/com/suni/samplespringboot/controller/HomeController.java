@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,4 +53,18 @@ public class HomeController {
     return "employees";
   }
 
+  @RequestMapping(value = "/addEmployee")
+  public String employeeForm(Model model){
+    model.addAttribute("employee",new Employee());
+    return "addEmployee";
+  }
+
+  @RequestMapping(value = "/employees/add")
+  public String addEmployees(Employee employee, Model model) {
+System.out.println(employee);
+    employee.setId(employeeMap.size()+1);
+    employeeMap.put(employeeMap.size()+1,employee);
+   System.out.println("size"+employeeMap.size());
+    return "redirect:/employees";
+  }
 }

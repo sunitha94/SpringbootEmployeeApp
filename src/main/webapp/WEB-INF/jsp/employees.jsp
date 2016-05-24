@@ -32,8 +32,9 @@
       <td>${employee.gender}</td>
       <td><a href="/employees/${employee.id}">Edit</a> &nbsp;
         <a href="/employees/${employee.id}/delete">Delete</a></td>
-    </tr>
-  </c:forEach>
+</tr>
+</c:forEach>
+<a href="/addEmployee">addEmplyee</a>
 </table>
 </body>
 </html>
